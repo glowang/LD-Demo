@@ -31,6 +31,13 @@ jobs:
               find . -name flagdata.json
               cat flagdata.json
               echo Just called LD
+              git config user.email "wanggloria21@gmail.com"
+              git config user.name "CircleCI Job"
+              git checkout master
+              git diff
+              git add .
+              git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
+              git push
   
   commit-flag-files:
     docker:
@@ -70,6 +77,6 @@ workflows:
   call-launchdarkly-and-commit-flag-file:
     jobs:
         - write-feature-flag-to-files
-        - commit-flag-files:
-           requires:
-             - write-feature-flag-to-files
+        # - commit-flag-files:
+        #    requires:
+        #      - write-feature-flag-to-files
