@@ -6,12 +6,6 @@ orbs:
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#
-commands:
-    install-requirements:
-      steps:
-        - run:
-            name: myname
-            command: pip3 install -r requirements.txt
 
 jobs:
   write-feature-flag-to-files:
@@ -23,53 +17,15 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               git branch
-              pwd
-              ls
-              cat flagdata.json
-              echo Making Call to LD
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               find . -name flagdata.json
-              cat flagdata.json
-              echo Just called LD
+              git config --global push.autoSetupRemote true
               git config user.email "wanggloria21@gmail.com"
               git config user.name "CircleCI Job"
-              git checkout master
               git diff
               git add .
               git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
               git push
-  
-  commit-flag-files:
-    docker:
-      - image: cimg/base:stable # TODO:need to check when to include an image
-    steps:
-      - checkout  # TODO:still needed? 
-      - run:
-          name: Commit to github
-          command: |
-            git config user.email "wanggloria21@gmail.com"
-            git config user.name "CircleCI Job"
-            git checkout master
-            git diff
-            git add .
-            git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
-            git push
-            
-  build:
-    executor: python/default # use the default executor defined within the orb
-    docker: 
-       - image: cimg/base:stable
-    steps:
-      - checkout
-      - install-requirements
-      - python/install-packages:
-          pkg-manager: pip
-      - run: 
-          name: Install requirements and run
-          command: |
-              pip install -r requirements.txt
-              pip install ldclient
-              python3 main.py --flag "show-feature-to-target-users-only" --key "select-user"   
   
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -77,6 +33,3 @@ workflows:
   call-launchdarkly-and-commit-flag-file:
     jobs:
         - write-feature-flag-to-files
-        # - commit-flag-files:
-        #    requires:
-        #      - write-feature-flag-to-files
