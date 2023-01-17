@@ -25,8 +25,6 @@ jobs:
               git branch
               pwd
               ls
-              find . -name flagdata.json
-              cat flagdata.json
               echo Making Call to LD
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               find . -name flagdata.json
