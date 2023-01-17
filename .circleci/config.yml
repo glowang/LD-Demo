@@ -36,6 +36,8 @@ jobs:
       - run:
           name: Commit to github
           command: |
+            git config user.email "wanggloria21@gmail.com"
+            git config user.name "CircleCI Job"
             git checkout master
             git diff
             git add .
