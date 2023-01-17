@@ -9,7 +9,7 @@ Python version 3.5 or higher
 
 
 ## Setup Instructions:
-1. Clone the repo at 
+1. Clone the repo at  
     ```bash
     https://github.com/glowang/LD-Demo.git
     ```
