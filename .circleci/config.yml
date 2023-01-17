@@ -1,6 +1,8 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
+orbs:
+  python: circleci/python@2.1.1
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#
@@ -24,11 +26,14 @@ jobs:
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               echo Just called LD
   build:
+    executor: python/default # use the default executor defined within the orb
     docker: 
        - image: cimg/base:stable
     steps:
       - checkout
       - install-requirements
+      - python/install-packages:
+          pkg-manager: pip
       - run: 
           name: Install requirements and run
           command: |
