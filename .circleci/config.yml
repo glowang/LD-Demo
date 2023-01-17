@@ -22,13 +22,31 @@ jobs:
       - run:
           name: Call LaunchDarkly API
           command: |
-              echo Making Call to LD
+              git branch
               pwd
-              ls -a
+              ls
+              echo Making Call to LD
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               find . -name flagdata.json
               cat flagdata.json
               echo Just called LD
+  
+  commit-flag-files:
+    docker:
+      - image: cimg/base:stable # TODO:need to check when to include an image
+    steps:
+      - checkout  # TODO:still needed? 
+      - run:
+          name: Commit to github
+          command: |
+            git config user.email "wanggloria21@gmail.com"
+            git config user.name "CircleCI Job"
+            git checkout master
+            git diff
+            git add .
+            git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
+            git push
+            
   build:
     executor: python/default # use the default executor defined within the orb
     docker: 
@@ -48,6 +66,9 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  call-launchdarkly-before-build:
+  call-launchdarkly-and-commit-flag-file:
     jobs:
-      - write-feature-flag-to-files
+        - write-feature-flag-to-files
+        - commit-flag-files:
+           requires:
+             - write-feature-flag-to-files
