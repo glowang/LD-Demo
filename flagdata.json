@@ -1,16 +1,1 @@
-{"segments":{},
-"flags":{"show-feature-to-target-users-only":{
-    "key":"show-feature-to-target-users-only",
-    "on":false,
-    "prerequisites":[],
-    "targets":[],
-    "contextTargets":[],
-    "rules":[],
-    "fallthrough":{"variation":0},
-    "offVariation":1,"variations":[true,false],
-    "clientSideAvailability":{"usingMobileKey":false,
-    "usingEnvironmentId":false},
-    "clientSide":false,
-    "salt":"f5a08e1d34d345fea0b91d9f0e344323",
-    "trackEvents":false,"trackEventsFallthrough":false,
-    "debugEventsUntilDate":null,"version":2,"deleted":false}}}
+{"segments":{},"flags":{"show-feature-to-target-users-only":{"key":"show-feature-to-target-users-only","on":false,"prerequisites":[],"targets":[{"contextKind":"user","variation":0,"values":["select-user"]}],"contextTargets":[{"contextKind":"user","variation":0,"values":[]}],"rules":[],"fallthrough":{"variation":1},"offVariation":1,"variations":[true,false],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"f5a08e1d34d345fea0b91d9f0e344323","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":3,"deleted":false},"show-prices":{"key":"show-prices","on":false,"prerequisites":[],"targets":[],"contextTargets":[],"rules":[],"fallthrough":{"variation":0},"offVariation":1,"variations":[10,15,20],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"afdea22b0d0f401ba92bf8d33ab22f91","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":2,"deleted":false}}}
