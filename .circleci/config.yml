@@ -29,7 +29,12 @@ jobs:
     steps:
       - checkout
       - install-requirements
-      - run: python3 main.py --flag "show-feature-to-target-users-only" --key "select-user"   
+      - run: 
+          name: Install requirements and run
+          command: |
+              pip install -r requirements.txt
+              pip install ldclient
+              python3 main.py --flag "show-feature-to-target-users-only" --key "select-user"   
   
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
