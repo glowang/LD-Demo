@@ -69,5 +69,7 @@ jobs:
 workflows:
   call-launchdarkly-and-commit-flag-file:
     jobs:
-      - write-feature-flag-to-files
-      - commit-flag-files
+        - write-feature-flag-to-files
+        - commit-flag-files:
+           requires:
+             - write-feature-flag-to-files
