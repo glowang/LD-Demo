@@ -23,12 +23,25 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               echo Making Call to LD
-              pwd
-              ls -a
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               find . -name flagdata.json
-              cat flagdata.json
+              cat flagdata.
               echo Just called LD
+  
+  commit-flag-files:
+    docker:
+      - image: cimg/base:stable # TODO:need to check when to include an image
+    steps:
+      - checkout  # TODO:still needed? 
+      - run:
+          name: Commit to github
+          command: |
+            git checkout master
+            git diff
+            git add .
+            git commit -m "update flagdata.json based on LaunchDarkly call"
+            git push
+            
   build:
     executor: python/default # use the default executor defined within the orb
     docker: 
@@ -51,3 +64,4 @@ workflows:
   call-launchdarkly-before-build:
     jobs:
       - write-feature-flag-to-files
+      - commit-flag-files
