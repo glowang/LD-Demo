@@ -5,6 +5,16 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+  build:
+    docker: 
+       - image: "circleci/python:3.6.4"
+    steps:
+      - checkout
+      - write-feature-flag-to-files:
+          name: fetchFlagsFromLaunchDarkly
+          command: |
+            curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
+      - run: python3 main.py --flag "show-feature-to-target-users-only" --key "select-user"   
   say-hello:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
