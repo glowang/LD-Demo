@@ -61,7 +61,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  call-launchdarkly-before-build:
+  call-launchdarkly-and-commit-flag-file:
     jobs:
       - write-feature-flag-to-files
       - commit-flag-files
