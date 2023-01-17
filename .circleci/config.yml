@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   write-feature-flag-to-files:
     docker: 
-      - image: "circleci/python:3.6.4"
+      - image: cimg/base:stable
     steps:
       - checkout
       - run:
@@ -18,7 +18,7 @@ jobs:
               echo Just called LD
   build:
     docker: 
-       - image: "circleci/python:3.6.4"
+       - image: cimg/base:stable
     steps:
       - checkout
       - run: python3 main.py --flag "show-feature-to-target-users-only" --key "select-user"   
@@ -38,10 +38,9 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  call-launchdarkly-before-build:
     jobs:
       - write-feature-flag-to-files
       - build:
           requires:
             - write-feature-flag-to-files
-      - say-hello
