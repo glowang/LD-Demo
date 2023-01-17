@@ -12,6 +12,19 @@ commands:
         - run:
             name: myname
             command: pip3 install -r requirements.txt
+    
+    commit-changes-to-github:
+      steps:
+        - run:
+            name: Commit flag changes
+            command: |
+              git config user.email "wanggloria21@gmail.com"
+              git config user.name "CircleCI Job"
+              git checkout master
+              git diff
+              git add .
+              git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
+              git push
 
 jobs:
   write-feature-flag-to-files:
@@ -23,21 +36,9 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               git branch
-              pwd
-              ls
-              cat flagdata.json
-              echo Making Call to LD
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
               find . -name flagdata.json
-              cat flagdata.json
-              echo Just called LD
-              git config user.email "wanggloria21@gmail.com"
-              git config user.name "CircleCI Job"
-              git checkout master
-              git diff
-              git add .
-              git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
-              git push
+              commit-changes-to-github
   
   commit-flag-files:
     docker:
@@ -55,7 +56,7 @@ jobs:
             git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
             git push
             
-  build:
+  build:  # TODO
     executor: python/default # use the default executor defined within the orb
     docker: 
        - image: cimg/base:stable
