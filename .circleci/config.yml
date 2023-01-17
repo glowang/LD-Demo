@@ -40,5 +40,8 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - build
+      - write-feature-flag-to-files
+      - build:
+          requires:
+            - write-feature-flag-to-files
       - say-hello
