@@ -44,7 +44,7 @@ jobs:
             git checkout master
             git diff
             git add .
-            git commit -m "update flagdata.json based on LaunchDarkly call"
+            git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
             git push
             
   build:
