@@ -15,6 +15,7 @@ commands:
     
     commit-changes-to-github:
       steps:
+        - checkout
         - run:
             name: Commit flag changes
             command: |
