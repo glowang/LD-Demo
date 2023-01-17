@@ -16,7 +16,7 @@ def evaluate_feature_flag_value():
     """
     parser = create_parser()
     feature_flag, country, user_key = get_command_args(parser)
-    ld_client = initialize_ld_client()
+    ld_client = initialize_ld_client(read_from_file=True)
     user = get_launchdarkly_user(country=country, key=user_key)
     results = is_feature_flag_enabled(feature_flag, user, False)
     display_flag_result(results, feature_flag)

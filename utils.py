@@ -1,4 +1,6 @@
 import ldclient
+from ldclient.config import Config
+from ldclient.integrations import Files
 import os
 from ldclient.config import Config
 import argparse
@@ -26,10 +28,13 @@ def get_command_args(parser):
     return feature_flag, country, user_key
 
 
-def initialize_ld_client():
+def initialize_ld_client(read_from_file=False):
     # Initialize the ldclient with your environment-specific SDK key.
     # Doing so ensures that the SDK is used as a singleton
-    set_config_for_sdk_instance()
+    if read_from_file:
+        set_config_for_read_from_file()
+    else:
+        set_config_for_sdk_instance()
     global ld_client
     if ld_client is not None:
         return ld_client
@@ -42,6 +47,11 @@ def initialize_ld_client():
         show_message("SDK failed to initialize")
         exit()
 
+def set_config_for_read_from_file():
+    data_source_callback = Files.new_data_source(paths=["flagdata.json"],
+    auto_update=True)
+    config = Config(os.getenv("LD_SDK_KEY"), update_processor_class=data_source_callback, send_events=False)
+    ldclient.set_config(config) 
 
 def set_config_for_sdk_instance():
     sdk_key = os.getenv("LD_SDK_KEY")
