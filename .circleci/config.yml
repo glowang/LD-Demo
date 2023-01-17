@@ -23,7 +23,9 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               echo Making Call to LD
+              pwd
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
+              find . -name flagdata.json
               cat flagdata.json
               echo Just called LD.
   build:
