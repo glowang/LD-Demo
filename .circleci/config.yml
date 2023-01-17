@@ -48,4 +48,3 @@ workflows:
   call-launchdarkly-before-build:
     jobs:
       - write-feature-flag-to-files
-     
