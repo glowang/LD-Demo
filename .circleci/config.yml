@@ -23,7 +23,6 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               git branch
-              git pull
               pwd
               ls
               find . -name flagdata.json
