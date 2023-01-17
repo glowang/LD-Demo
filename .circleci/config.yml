@@ -22,6 +22,8 @@ jobs:
       - run:
           name: Call LaunchDarkly API
           command: |
+              pwd
+              ls
               find . -name flagdata.json
               cat flagdata.json
               echo Making Call to LD
