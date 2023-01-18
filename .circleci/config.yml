@@ -32,9 +32,11 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Build and push Docker image
+          # build the docker image based on the Dockerfile included in Repo.
+          # then log in to docker hub & push this image
           command: |
             python3 main.py
-            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
+            docker build -t ariv3ra/$IMAGE_NAME:$TAG . 
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push ariv3ra/$IMAGE_NAME:$TAG
 
