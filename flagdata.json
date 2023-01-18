@@ -93,7 +93,24 @@
          "offVariation" : 1,
          "on" : true,
          "prerequisites" : [],
-         "rules" : [],
+         "rules" : [
+            {
+               "clauses" : [
+                  {
+                     "attribute" : "is_beta_customer",
+                     "contextKind" : "user",
+                     "negate" : false,
+                     "op" : "in",
+                     "values" : [
+                        "True"
+                     ]
+                  }
+               ],
+               "id" : "dcb8f23c-44a3-49b2-a0a1-9a9bdea82206",
+               "trackEvents" : false,
+               "variation" : 0
+            }
+         ],
          "salt" : "f5a08e1d34d345fea0b91d9f0e344323",
          "targets" : [
             {
@@ -110,7 +127,7 @@
             true,
             false
          ],
-         "version" : 8
+         "version" : 9
       },
       "show-prices" : {
          "clientSide" : false,
