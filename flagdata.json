@@ -77,7 +77,13 @@
             "usingEnvironmentId" : false,
             "usingMobileKey" : false
          },
-         "contextTargets" : [],
+         "contextTargets" : [
+            {
+               "contextKind" : "user",
+               "values" : [],
+               "variation" : 0
+            }
+         ],
          "debugEventsUntilDate" : null,
          "deleted" : false,
          "fallthrough" : {
@@ -89,14 +95,22 @@
          "prerequisites" : [],
          "rules" : [],
          "salt" : "f5a08e1d34d345fea0b91d9f0e344323",
-         "targets" : [],
+         "targets" : [
+            {
+               "contextKind" : "user",
+               "values" : [
+                  "qa-user-1"
+               ],
+               "variation" : 0
+            }
+         ],
          "trackEvents" : false,
          "trackEventsFallthrough" : false,
          "variations" : [
             true,
             false
          ],
-         "version" : 11
+         "version" : 12
       },
       "show-prices" : {
          "clientSide" : false,
