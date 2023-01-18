@@ -17,7 +17,7 @@ jobs:
           name: Call LaunchDarkly API
           command: |
               git branch
-              curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all >flagdata.json
+              curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all | json_pp >flagdata.json
               find . -name flagdata.json
               git config --global push.autoSetupRemote true
               git config user.email "wanggloria21@gmail.com"
