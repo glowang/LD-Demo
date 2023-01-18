@@ -99,7 +99,6 @@
             {
                "contextKind" : "user",
                "values" : [
-                  "qa-user-2",
                   "qa-user-1"
                ],
                "variation" : 0
@@ -111,7 +110,7 @@
             true,
             false
          ],
-         "version" : 13
+         "version" : 14
       },
       "show-prices" : {
          "clientSide" : false,
