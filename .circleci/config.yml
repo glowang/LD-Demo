@@ -16,16 +16,28 @@ jobs:
       - run:
           name: Call LaunchDarkly API
           command: |
-              git branch
               curl -H "Authorization: sdk-26799750-b3c4-4fff-a71d-037f25e49530" https://sdk.launchdarkly.com/sdk/latest-all | json_pp >flagdata.json
-              find . -name flagdata.json
               git config --global push.autoSetupRemote true
               git config user.email "wanggloria21@gmail.com"
               git config user.name "CircleCI Job"
-              git diff
               git add .
               git commit --allow-empty -m "[ci skip] update flagdata.json based on LaunchDarkly call"
-              git push
+              git push 
+  build:
+    docker: 
+      - image: circleci/python:2.7.14
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Build and push Docker image
+          command: |
+            python3 main.py
+            docker build -t ariv3ra/$IMAGE_NAME:$TAG .
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push ariv3ra/$IMAGE_NAME:$TAG
+
   
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -33,3 +45,6 @@ workflows:
   call-launchdarkly-and-commit-flag-file:
     jobs:
         - write-feature-flag-to-files
+        # - build:
+        #     requires: 
+        #         - write-feature-flag-to-files
