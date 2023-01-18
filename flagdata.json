@@ -93,30 +93,14 @@
          "offVariation" : 1,
          "on" : true,
          "prerequisites" : [],
-         "rules" : [
-            {
-               "clauses" : [
-                  {
-                     "attribute" : "is_beta_customer",
-                     "contextKind" : "user",
-                     "negate" : false,
-                     "op" : "in",
-                     "values" : [
-                        "True"
-                     ]
-                  }
-               ],
-               "id" : "dcb8f23c-44a3-49b2-a0a1-9a9bdea82206",
-               "trackEvents" : false,
-               "variation" : 0
-            }
-         ],
+         "rules" : [],
          "salt" : "f5a08e1d34d345fea0b91d9f0e344323",
          "targets" : [
             {
                "contextKind" : "user",
                "values" : [
-                  "qa-user"
+                  "qa-user-1",
+                  "qa-user-2"
                ],
                "variation" : 0
             }
@@ -127,7 +111,7 @@
             true,
             false
          ],
-         "version" : 9
+         "version" : 10
       },
       "show-prices" : {
          "clientSide" : false,
