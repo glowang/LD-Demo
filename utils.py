@@ -92,7 +92,7 @@ def get_launchdarkly_user(country: str, key: str):
     ld_user = {}
 
     if key is None:
-        show_message(Fore.RED + "Parameter --key is unset, using default key default_user")
+        show_message("Parameter --key is unset, using default key default_user")
         key = "default_user"
     ld_user["key"] = key
     if country is not None:
