@@ -1,1 +1,131 @@
-{"segments":{},"flags":{"new-flag-2":{"key":"new-flag-2","on":false,"prerequisites":[],"targets":[],"contextTargets":[],"rules":[],"fallthrough":{"variation":0},"offVariation":1,"variations":[1,2],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"85f15139ba324cabbe9f2c570598c056","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":2,"deleted":false},"provide-discount-to-us-users":{"key":"provide-discount-to-us-users","on":true,"prerequisites":[],"targets":[],"contextTargets":[],"rules":[{"variation":0,"id":"e919a54c-d858-41ba-be77-b3cbfba68205","clauses":[{"contextKind":"user","attribute":"country","op":"in","values":["United States"],"negate":false}],"trackEvents":false}],"fallthrough":{"variation":0},"offVariation":1,"variations":[80,100],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"7bbe2cfe372a49aba9a410b7fd074e45","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":3,"deleted":false},"show-feature-to-target-users-only":{"key":"show-feature-to-target-users-only","on":false,"prerequisites":[],"targets":[],"contextTargets":[],"rules":[],"fallthrough":{"variation":0},"offVariation":1,"variations":[true,false],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"f5a08e1d34d345fea0b91d9f0e344323","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":6,"deleted":false},"show-prices":{"key":"show-prices","on":false,"prerequisites":[],"targets":[],"contextTargets":[],"rules":[],"fallthrough":{"variation":0},"offVariation":1,"variations":[10,15,20],"clientSideAvailability":{"usingMobileKey":false,"usingEnvironmentId":false},"clientSide":false,"salt":"afdea22b0d0f401ba92bf8d33ab22f91","trackEvents":false,"trackEventsFallthrough":false,"debugEventsUntilDate":null,"version":2,"deleted":false}}}
+{
+   "flags" : {
+      "new-flag-2" : {
+         "clientSide" : false,
+         "clientSideAvailability" : {
+            "usingEnvironmentId" : false,
+            "usingMobileKey" : false
+         },
+         "contextTargets" : [],
+         "debugEventsUntilDate" : null,
+         "deleted" : false,
+         "fallthrough" : {
+            "variation" : 0
+         },
+         "key" : "new-flag-2",
+         "offVariation" : 1,
+         "on" : false,
+         "prerequisites" : [],
+         "rules" : [],
+         "salt" : "85f15139ba324cabbe9f2c570598c056",
+         "targets" : [],
+         "trackEvents" : false,
+         "trackEventsFallthrough" : false,
+         "variations" : [
+            1,
+            2
+         ],
+         "version" : 2
+      },
+      "provide-discount-to-us-users" : {
+         "clientSide" : false,
+         "clientSideAvailability" : {
+            "usingEnvironmentId" : false,
+            "usingMobileKey" : false
+         },
+         "contextTargets" : [],
+         "debugEventsUntilDate" : null,
+         "deleted" : false,
+         "fallthrough" : {
+            "variation" : 0
+         },
+         "key" : "provide-discount-to-us-users",
+         "offVariation" : 1,
+         "on" : true,
+         "prerequisites" : [],
+         "rules" : [
+            {
+               "clauses" : [
+                  {
+                     "attribute" : "country",
+                     "contextKind" : "user",
+                     "negate" : false,
+                     "op" : "in",
+                     "values" : [
+                        "United States"
+                     ]
+                  }
+               ],
+               "id" : "e919a54c-d858-41ba-be77-b3cbfba68205",
+               "trackEvents" : false,
+               "variation" : 0
+            }
+         ],
+         "salt" : "7bbe2cfe372a49aba9a410b7fd074e45",
+         "targets" : [],
+         "trackEvents" : false,
+         "trackEventsFallthrough" : false,
+         "variations" : [
+            80,
+            100
+         ],
+         "version" : 3
+      },
+      "show-feature-to-target-users-only" : {
+         "clientSide" : false,
+         "clientSideAvailability" : {
+            "usingEnvironmentId" : false,
+            "usingMobileKey" : false
+         },
+         "contextTargets" : [],
+         "debugEventsUntilDate" : null,
+         "deleted" : false,
+         "fallthrough" : {
+            "variation" : 0
+         },
+         "key" : "show-feature-to-target-users-only",
+         "offVariation" : 1,
+         "on" : false,
+         "prerequisites" : [],
+         "rules" : [],
+         "salt" : "f5a08e1d34d345fea0b91d9f0e344323",
+         "targets" : [],
+         "trackEvents" : false,
+         "trackEventsFallthrough" : false,
+         "variations" : [
+            true,
+            false
+         ],
+         "version" : 6
+      },
+      "show-prices" : {
+         "clientSide" : false,
+         "clientSideAvailability" : {
+            "usingEnvironmentId" : false,
+            "usingMobileKey" : false
+         },
+         "contextTargets" : [],
+         "debugEventsUntilDate" : null,
+         "deleted" : false,
+         "fallthrough" : {
+            "variation" : 0
+         },
+         "key" : "show-prices",
+         "offVariation" : 1,
+         "on" : false,
+         "prerequisites" : [],
+         "rules" : [],
+         "salt" : "afdea22b0d0f401ba92bf8d33ab22f91",
+         "targets" : [],
+         "trackEvents" : false,
+         "trackEventsFallthrough" : false,
+         "variations" : [
+            10,
+            15,
+            20
+         ],
+         "version" : 2
+      }
+   },
+   "segments" : {}
+}
