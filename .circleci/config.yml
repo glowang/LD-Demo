@@ -24,7 +24,7 @@ jobs:
               git config user.name "CircleCI Job"
               git diff
               git add .
-              git commit --allow-empty -m "update flagdata.json based on LaunchDarkly call"
+              git commit --allow-empty -m "[ci skip] update flagdata.json based on LaunchDarkly call"
               git push
   
 # Invoke jobs via workflows
