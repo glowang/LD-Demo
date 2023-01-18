@@ -4,6 +4,7 @@ from ldclient.integrations import Files
 import os
 from ldclient.config import Config
 import argparse
+from colorama import Fore
 
 ld_client = None
 
@@ -91,7 +92,7 @@ def get_launchdarkly_user(country: str, key: str):
     ld_user = {}
 
     if key is None:
-        show_message("Parameter --key is unset, using default key default_user")
+        show_message(Fore.RED + "Parameter --key is unset, using default key default_user")
         key = "default_user"
     ld_user["key"] = key
     if country is not None:
@@ -103,8 +104,8 @@ def display_flag_result(results, feature_flag):
     flag_value = results["value"]
     reason = results.get("reason")
     debug_info = results.get("debug_info")
-    show_message(
-        f"Feature flag {feature_flag} is {flag_value} for this user. Reason: {reason}. Debug: {debug_info}"
+    print(
+        Fore.GREEN + f"Feature flag {feature_flag} is {flag_value} for this user. Reason: {reason}. Debug: {debug_info}"
     )
 
 
