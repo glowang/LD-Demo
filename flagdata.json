@@ -87,7 +87,7 @@
          "debugEventsUntilDate" : null,
          "deleted" : false,
          "fallthrough" : {
-            "variation" : 0
+            "variation" : 1
          },
          "key" : "show-feature-to-target-users-only",
          "offVariation" : 1,
@@ -110,7 +110,7 @@
             true,
             false
          ],
-         "version" : 7
+         "version" : 8
       },
       "show-prices" : {
          "clientSide" : false,
